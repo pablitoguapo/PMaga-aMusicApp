@@ -11,6 +11,6 @@ interface MusicApi {
 
     @GET("api/albums/{id}")
     suspend fun getAlbumDetail(
-        @Path("id") id: Int
+        @Path("id") id: String // Cambiado de Int a String
     ): Album
 }

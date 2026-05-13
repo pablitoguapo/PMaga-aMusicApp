@@ -4,14 +4,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.*
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import com.example.pmagaamusicapp.models.Album
 import com.example.pmagaamusicapp.ui.theme.PMagañaMusicAppTheme
 
@@ -20,36 +22,37 @@ fun RecentItem(
     album: Album,
     onClick: () -> Unit
 ) {
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 6.dp)
             .clip(RoundedCornerShape(16.dp))
             .background(Color.White)
-            .clickable {
-                onClick()
-            }
-            .padding(10.dp)
+            .clickable { onClick() }
+            .padding(10.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-
         AsyncImage(
             model = album.image,
             contentDescription = null,
             modifier = Modifier
                 .size(55.dp)
                 .clip(RoundedCornerShape(10.dp))
+                .background(Color.LightGray),
+            contentScale = ContentScale.Crop
         )
 
         Spacer(modifier = Modifier.width(12.dp))
 
         Column {
-
-            Text(text = album.title)
-
+            Text(
+                text = album.title,
+                style = MaterialTheme.typography.bodyLarge
+            )
             Text(
                 text = "${album.artist} • Popular Song",
-                color = Color.Gray
+                color = Color.Gray,
+                style = MaterialTheme.typography.bodySmall
             )
         }
     }
@@ -61,7 +64,7 @@ fun PreviewRecentItem() {
     PMagañaMusicAppTheme {
         RecentItem(
             album = Album(
-                id = 1,
+                id = "1",
                 title = "Nombre del Álbum",
                 artist = "Nombre del Artista",
                 image = "https://via.placeholder.com/150",

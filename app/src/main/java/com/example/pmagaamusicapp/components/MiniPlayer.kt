@@ -13,7 +13,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import com.example.pmagaamusicapp.models.Album
 import com.example.pmagaamusicapp.ui.theme.PMagañaMusicAppTheme
 
@@ -80,7 +80,7 @@ fun PreviewMiniPlayer() {
     PMagañaMusicAppTheme {
         MiniPlayer(
             album = Album(
-                id = 1,
+                id = "",
                 title = "Nombre del Álbum",
                 artist = "Nombre del Artista",
                 image = "https://via.placeholder.com/150",
